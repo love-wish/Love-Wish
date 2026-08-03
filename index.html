@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Love&Wish creates premium personalized surprise websites for birthdays, anniversaries, proposals, valentine surprises and every special occasion." />
+  <meta name="theme-color" content="#f65d7d" />
+  <title>Love&Wish | Premium Surprise Websites</title>
+  <style>
+    :root{
+      --bg:#fffafc;
+      --surface:rgba(255,255,255,0.72);
+      --surface-strong:#ffffff;
+      --text:#2b1c26;
+      --muted:#7c5c67;
+      --primary:#f15c85;
+      --secondary:#d7305b;
+      --gold:#e6b15a;
+      --gold-2:#f7df9d;
+      --line:rgba(226, 122, 147, 0.18);
+      --shadow:0 12px 40px rgba(204, 84, 126, 0.18);
+      --shadow-soft:0 8px 24px rgba(102, 33, 61, 0.12);
+      --hero-gradient:linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255, 233, 240, 0.86));
+      --card-gradient:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,247,250,0.7));
+      --icon-bg:linear-gradient(135deg, rgba(244,89,126,0.14), rgba(230,177,90,0.16));
+    }
+
+    body.dark-mode{
+      --bg:#130d14;
+      --surface:rgba(30,16,25,0.7);
+      --surface-strong:#1e1420;
+      --text:#fff4f7;
+      --muted:#d4b1bd;
+      --primary:#ff7ca0;
+      --secondary:#ff5786;
+      --gold:#f8cc7f;
+      --gold-2:#fff0c6;
+      --line:rgba(248, 189, 211, 0.12);
+      --shadow:0 12px 40px rgba(0,0,0,0.35);
+      --shadow-soft:0 8px 24px rgba(0,0,0,0.25);
+      --hero-gradient:linear-gradient(135deg, rgba(31,17,27,0.95), rgba(58,21,40,0.92));
+      --card-gradient:linear-gradient(180deg, rgba(34,20,30,0.95), rgba(22,13,21,0.9));
+      --icon-bg:linear-gradient(135deg, rgba(255,124,160,0.1), rgba(248,204,127,0.12));
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(249, 180, 201, 0.38), transparent 24%),
+        radial-gradient(circle at top right, rgba(247, 215, 144, 0.3), transparent 18%),
+        var(--bg);
+      color:var(--text);
+      transition:background .35s ease,color .35s ease;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+    }
+    .section{
+      padding:78px 0;
+      position:relative;
+    }
+    .section-title{
+      text-align:center;
+      margin-bottom:38px;
+    }
+    .section-title h2{
+      margin:0 0 12px;
+      font-size:clamp(1.85rem, 4vw, 2.9rem);
+      font-weight:800;
+      letter-spacing:-0.04em;
+    }
+    .section-title p{
+      margin:0 auto;
+      max-width:700px;
+      color:var(--muted);
+      font-size:1.03rem;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.45);
+    }
+    body.dark-mode .topbar{background:rgba(18,10,15,0.55)}
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0;
+      gap:18px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      font-size:1.25rem;
+      letter-spacing:.02em;
+      color:var(--text);
+    }
+    .logo-badge{
+      width:36px;height:36px;border-radius:50%;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, var(--primary), var(--gold));
+      box-shadow:var(--shadow-soft);
+      color:#fff;font-size:1rem;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .nav-links a{
+      font-size:.95rem;
+      color:var(--muted);
+      transition:.25s ease;
+      position:relative;
+    }
+    .nav-links a:hover{color:var(--primary)}
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+      background:linear-gradient(90deg, var(--primary), var(--gold));transition:.25s ease;border-radius:99px;
+    }
+    .nav-links a:hover::after{width:100%}
+    .nav-actions{
+      display:flex;align-items:center;gap:12px;
+    }
+    .toggle-btn,.btn{
+      border:none;cursor:pointer;
+      transition:.25s ease;
+    }
+    .theme-toggle{
+      width:46px;height:46px;border-radius:50%;
+      background:var(--surface);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+      display:grid;place-items:center;
+      color:var(--text);
+      font-size:1rem;
+    }
+    .btn{
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, var(--primary), #ff6d86);
+      color:white;
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,0.78);
+      color:var(--text);
+      border:1px solid var(--line);
+      backdrop-filter:blur(14px);
+    }
+    body.dark-mode .btn.secondary{background:rgba(42,24,35,0.7)}
+    .btn:hover{transform:translateY(-2px) scale(1.01)}
+    .ripple{
+      position:absolute;
+      border-radius:50%;
+      transform:scale(0);
+      animation:ripple 700ms linear;
+      background:rgba(255,255,255,0.65);
+      pointer-events:none;
+    }
+    @keyframes ripple{to{transform:scale(4);opacity:0}}
+    .hero{
+      padding:58px 0 70px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-shell{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;gap:42px;
+      align-items:center;
+      padding:40px 0 0;
+    }
+    .hero-copy h1{
+      margin:0 0 18px;
+      font-size:clamp(2.4rem, 5vw, 4.2rem);
+      line-height:1.08;
+      letter-spacing:-0.05em;
+    }
+    .hero-copy h1 .pink{color:var(--primary)}
+    .hero-copy p{
+      margin:0 0 24px;
+      max-width:650px;
+      color:var(--muted);
+      font-size:1.08rem;
+      line-height:1.78;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .typing-line{
+      margin:12px 0 0;
+      display:flex;gap:8px;align-items:center;
+      flex-wrap:wrap;
+      color:var(--muted);font-size:.94rem;
+    }
+    .typed-text{color:var(--secondary);font-weight:800}
+    .hero-card{
+      background:var(--hero-gradient);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter:blur(14px);
+    }
+    .hero-card::before,
+    .hero-card::after{
+      content:"";position:absolute;border-radius:50%;filter:blur(8px);
+      opacity:.9;
+    }
+    .hero-card::before{
+      width:180px;height:180px;background:rgba(255,102,144,0.26);top:-40px;right:-32px;
+    }
+    .hero-card::after{
+      width:160px;height:160px;background:rgba(255,208,109,0.2);left:-50px;bottom:-35px;
+    }
+    .mini-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+    }
+    .mini-card{
+      background:var(--card-gradient);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:16px;
+      backdrop-filter:blur(10px);
+    }
+    .mini-card h4{
+      margin:0 0 8px;font-size:1rem;
+    }
+    .mini-card p{
+      margin:0;color:var(--muted);font-size:.9rem;line-height:1.6;
+    }
+    .stats{
+      margin-top:16px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    }
+    .count-up{
+      background:var(--surface);
+      border:1px solid var(--line);
+      padding:16px;border-radius:18px;text-align:center;
+      box-shadow:var(--shadow-soft);
+    }
+    .count-up strong{
+      display:block;font-size:1.45rem;color:var(--primary);
+    }
+    .count-up span{color:var(--muted);font-size:.84rem}
+
+    .cards-wrap{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+    }
+    .glass-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+      border-radius:26px;
+      backdrop-filter:blur(12px);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .glass-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow);
+    }
+    .service-card .icon{
+      width:62px;height:62px;border-radius:18px;
+      display:grid;place-items:center;font-size:1.35rem;
+      background:var(--icon-bg);
+      border:1px solid var(--line);
+    }
+    .service-card h3{margin:18px 0 10px;font-size:1.1rem}
+    .service-card p{margin:0;color:var(--muted);line-height:1.72;font-size:.95rem}
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+      align-items:stretch;
+    }
+    .price-card{
+      background:var(--surface);
+      border-radius:28px;
+      border:1px solid var(--line);
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .price-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .price-card.popular{
+      border:1px solid rgba(229, 175, 94, 0.55);
+      background:linear-gradient(180deg, rgba(255,244,223,0.55), rgba(255,255,255,0.75));
+      transform:scale(1.03);
+      box-shadow:0 16px 42px rgba(233, 182, 88, 0.22);
+    }
+    body.dark-mode .price-card.popular{
+      background:linear-gradient(180deg, rgba(74,44,23,0.8), rgba(31,19,28,0.88));
+    }
+    .popular-badge{
+      position:absolute;top:14px;right:14px;
+      background:linear-gradient(135deg, var(--gold), #f9d179);
+      color:#4e2f00;
+      border-radius:999px;
+      padding:6px 10px;font-size:.72rem;font-weight:900;
+      box-shadow:var(--shadow-soft);
+    }
+    .price-card h3{
+      margin:0 0 12px;font-size:1.15rem;
+    }
+    .price-card .price{
+      font-size:2rem;font-weight:900;letter-spacing:-0.04em;margin:0 0 10px;
+    }
+    .price-card .price small{font-size:1rem;color:var(--muted);font-weight:700}
+    .features{list-style:none;padding:0;margin:16px 0 0}
+    .features li{display:flex;gap:10px;align-items:flex-start;line-height:1.7;color:var(--text);font-size:.94rem}
+    .features li span{color:#20af70;font-weight:900}
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+    .portfolio-card{
+      background:var(--surface);
+      border-radius:26px;
+      border:1px solid var(--line);
+      padding:14px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+    }
+    .portfolio-preview{
+      border-radius:18px;
+      height:220px;
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg, #fbdbeb, #f6c4d5 45%, #f9d684);
+    }
+    .portfolio-preview::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(transparent, rgba(0,0,0,0.1)),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.65), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,0.55), transparent 25%);
+    }
+    .portfolio-preview .overlay{
+      position:absolute;left:16px;right:16px;bottom:16px;
+      padding:12px 14px;border-radius:16px;background:rgba(255,255,255,0.66);
+      font-weight:800;backdrop-filter:blur(8px);
+    }
+    .portfolio-card h3{margin:16px 0 8px}
+    .portfolio-card p{margin:0;color:var(--muted);line-height:1.68}
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+    .review-card{
+      background:var(--surface);
+      border-radius:24px;
+      border:1px solid var(--line);
+      padding:22px;
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .review-card:hover{transform:translateY(-5px);transition:.25s ease}
+    .review-head{
+      display:flex;align-items:center;gap:14px;margin-bottom:14px;
+    }
+    .avatar{
+      width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg, var(--primary), var(--gold));
+      color:#fff;font-weight:900;display:grid;place-items:center;
+      font-size:1rem;
+      box-shadow:var(--shadow-soft);
+    }
+    .review-name{font-weight:800}
+    .review-rating{color:#f4b000;margin-top:6px;font-size:.98rem}
+    .review-card p{margin:0;line-height:1.78;color:var(--muted)+;color:var(--muted)}
+
+    .why-grid{
+      display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:18px;
+    }
+    .why-item{
+      background:var(--surface);
+      border-radius:24px;
+      border:1px solid var(--line);
+      padding:22px;text-align:center;
+      box-shadow:var(--shadow-soft);
+    }
+    .why-item .icon{
+      width:64px;height:64px;border-radius:18px;
+      margin:0 auto 14px;background:var(--icon-bg);
+      display:grid;place-items:center;font-size:1.35rem;
+    }
+    .why-item h3{margin:0 0 8px;font-size:1.06rem}
+    .why-item p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.7}
+
+    .faq-list{
+      display:grid;gap:14px;max-width:900px;margin:0 auto;
+    }
+    .faq-item{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+    }
+    .faq-question{
+      width:100%;padding:18px 20px;border:none;background:transparent;color:var(--text);
+      text-align:left;font-weight:800;display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+    }
+    .faq-question span:last-child{transition:transform .25s ease}
+    .faq-item.active .faq-question span:last-child{transform:rotate(45deg)}
+    .faq-answer{
+      max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+      padding:0 20px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+    .faq-item.active .faq-answer{max-height:180px;padding:0 20px 18px}
+
+    .contact {
+      padding-bottom:120px;
+    }
+    .contact-card{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:20px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    .contact-info{
+      display:grid;gap:16px;align-content:start;
+    }
+    .contact-row{
+      display:flex;align-items:flex-start;gap:12px;
+      background:rgba(255,255,255,0.32);
+      padding:14px 16px;border-radius:18px;border:1px solid var(--line);
+    }
+    body.dark-mode .contact-row{background:rgba(42,24,35,0.4)}
+    .contact-icon{
+      width:42px;height:42px;border-radius:12px;background:var(--icon-bg);
+      display:grid;place-items:center;
+    }
+    .contact-title{font-weight:800;font-size:1.05rem}
+    .contact-sub{color:var(--muted);font-size:.95rem;line-height:1.7}
+    .wa-box{
+      display:flex;align-items:center;justify-content:center;
+      min-height:100%;
+      background:linear-gradient(135deg, rgba(8,186,89,0.08), rgba(200,255,221,0.08));
+      border:1px solid rgba(57,192,110,0.22);
+      border-radius:26px;
+      padding:22px;
+      text-align:center;
+    }
+    .wa-card{
+      background:linear-gradient(135deg, rgba(40, 182, 94, 0.18), rgba(40, 182, 94, 0.04));
+      padding:26px;border-radius:24px;border:1px solid rgba(40,182,94,0.25);
+      box-shadow:var(--shadow-soft);
+      width:min(100%, 360px);
+    }
+    .wa-icon{
+      width:74px;height:74px;border-radius:50%;margin:0 auto 14px;
+      display:grid;place-items:center;background:#fff;color:#1db954;font-size:1.8rem;
+      box-shadow:var(--shadow-soft);
+    }
+    .wa-card h3{
+      margin:0 0 8px;font-size:1.4rem;
+    }
+    .wa-card p{
+      margin:0 0 16px;color:var(--muted);line-height:1.7;
+    }
+    .whatsapp-link{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#1db954;color:#fff;
+      padding:12px 18px;border-radius:999px;font-weight:800;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:30px 0 40px;
+      text-align:center;
+      background:linear-gradient(180deg, transparent, rgba(233, 121, 159, 0.05));
+    }
+    .footer strong{font-size:1.35rem}
+    .footer p{margin:10px 0 0;color:var(--muted);font-size:.98rem}
+
+    .loader{
+      position:fixed;inset:0;
+      background:linear-gradient(135deg, rgba(255,245,248,0.98), rgba(255,255,255,0.9));
+      display:grid;place-items:center;z-index:100;
+      transition:opacity .46s ease, visibility .46s ease;
+    }
+    body.dark-mode .loader{
+      background:linear-gradient(135deg, rgba(30,17,25,0.98), rgba(14,8,12,0.97));
+    }
+    .loader.hidden{opacity:0;visibility:hidden}
+    .loader-inner{
+      display:grid;place-items:center;gap:14px;
+    }
+    .loader-ring{
+      width:86px;height:86px;border-radius:50%;
+      border:4px solid rgba(241, 92, 133, 0.15);
+      border-top-color:var(--primary);
+      border-right-color:var(--gold);
+      animation:spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loader-text{
+      font-size:1rem;font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--secondary);
+    }
+
+    .floating-wa{
+      position:fixed;right:18px;bottom:18px;
+      width:60px;height:60px;border-radius:50%;
+      background:#1db954;color:#fff;
+      display:grid;place-items:center;
+      font-size:1.45rem;
+      box-shadow:0 10px 28px rgba(29,185,84,.35);
+      z-index:30;
+      animation:bob 3s ease-in-out infinite;
+    }
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .back-to-top{
+      position:fixed;right:18px;bottom:92px;
+      width:52px;height:52px;border-radius:50%;
+      display:grid;place-items:center;
+      color:#fff;background:linear-gradient(135deg, var(--primary), var(--gold));
+      border:none;
+      box-shadow:var(--shadow-soft);
+      z-index:25;
+      opacity:0;pointer-events:none;transition:.25s ease;
+    }
+    .back-to-top.show{opacity:1;pointer-events:auto}
+    .reveal{
+      opacity:0;transform:translateY(25px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    .animated-bg{
+      position:fixed;inset:0;pointer-events:none;z-index:-1;
+      overflow:hidden;
+    }
+    .blob{
+      position:absolute;border-radius:50%;filter:blur(6px);
+      opacity:.45;animation:drift 12s linear infinite alternate;
+    }
+    .blob.one{width:200px;height:200px;background:rgba(240, 120, 164,0.32);top:12%;left:4%}
+    .blob.two{width:240px;height:240px;background:rgba(247, 210, 122,0.25);bottom:10%;right:7%;animation-duration:15s}
+    .blob.three{width:180px;height:180px;background:rgba(241, 92, 133,0.28);top:55%;left:44%;animation-duration:18s}
+    @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(12px,-14px,0) scale(1.08)}}
+
+    @media (max-width: 1024px){
+      .hero-shell,.contact-card{grid-template-columns:1fr}
+      .cards-wrap,.pricing-grid,.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .portfolio-grid,.reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 720px){
+      .nav-links{display:none}
+      .hero{padding-top:28px}
+      .btn{width:100%}
+      .hero-actions{flex-direction:column}
+      .cards-wrap,.pricing-grid,.portfolio-grid,.reviews-grid,.why-grid,.stats,.mini-grid{grid-template-columns:1fr}
+      .price-card.popular{transform:none}
+      .section{padding:64px 0}
+      .section-title h2{font-size:2rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg" aria-hidden="true">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Love&Wish</div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <a href="#home" class="logo">
+        <span class="logo-badge">♥</span>
+        <span>Love&Wish</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Packages</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-shell">
+        <div class="hero-copy reveal">
+          <h1>
+            Turn Your <span class="pink">Special Moments</span><br />
+            Into Beautiful Memories
+          </h1>
+          <p>We create beautiful personalized websites for birthdays, anniversaries, proposals and every special occasion.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn primary ripple-btn">Order Now</a>
+            <a href="#pricing" class="btn secondary ripple-btn">View Packages</a>
+          </div>
+          <div class="typing-line">
+            <span>Making magical moments with</span>
+            <span class="typed-text" id="typedText"></span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="mini-grid">
+            <div class="mini-card">
+              <h4>Premium Surprise</h4>
+              <p>Intimate, romantic websites with one-of-a-kind design touches.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Fast Delivery</h4>
+              <p>Elegant pages that feel luxurious and load instantly.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Custom Sections</h4>
+              <p>Love letters, gallery, countdowns, personalized wishes and music.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Mobile Ready</h4>
+              <p>Beautifully optimized for phone, tablet and desktop screens.</p>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="count-up"><strong data-count="320">0</strong><span>Surprises</span></div>
+            <div class="count-up"><strong data-count="96">0</strong><span>Happy Clients</span></div>
+            <div class="count-up"><strong data-count="24">0</strong><span>Hours Avg.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Our Services</h2>
+          <p>Luxury digital experiences designed to celebrate love, gratitude, friendship and every meaningful memory.</p>
+        </div>
+        <div class="cards-wrap">
+          <article class="glass-card service-card reveal">
+            <div class="icon">🎂</div>
+            <h3>Birthday Website</h3>
+            <p>Creative birthday surprise pages with wishes, music, gallery and heartfelt moments.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">💍</div>
+            <h3>Anniversary Website</h3>
+            <p>Celebrate your story beautifully with romantic timelines and personalized sections.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">💌</div>
+            <h3>Proposal Website</h3>
+            <p>Elegant proposal storytelling pages that make the moment unforgettable.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">❤️</div>
+            <h3>Love Website</h3>
+            <p>Professional romantic pages with letters, memories and deeply personal details.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">🙏</div>
+            <h3>Thank You Website</h3>
+            <p>Show your gratitude in a polished, heartfelt way with beautiful compositions.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">🤝</div>
+            <h3>Friendship Website</h3>
+            <p>Sweet and memorable pages that celebrate friendship, loyalty and joy.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">💘</div>
+            <h3>Valentine Website</h3>
+            <p>Romantic, dreamy designs crafted to express affection with premium aesthetics.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <div class="icon">✨</div>
+            <h3>Custom Surprise Website</h3>
+            <p>Anything unique, thoughtful and meaningful—your idea, our premium execution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Pricing Packages</h2>
+          <p>Choose the package that fits your occasion and the level of elegance you desire.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Basic Package</h3>
+            <div class="price">Rs.1000</div>
+            <ul class="features">
+              <li><span>✓</span> One Page Website</li>
+              <li><span>✓</span> Mobile Friendly</li>
+              <li><span>✓</span> Photos</li>
+              <li><span>✓</span> Music</li>
+              <li><span>✓</span> 3 Wishes</li>
+            </ul>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Standard Package</h3>
+            <div class="price">Rs.2000</div>
+            <ul class="features">
+              <li><span>✓</span> Everything in Basic</li>
+              <li><span>✓</span> Premium Design</li>
+              <li><span>✓</span> 5 Wishes</li>
+              <li><span>✓</span> Love Letter Section</li>
+              <li><span>✓</span> Gallery</li>
+            </ul>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Premium Package</h3>
+            <div class="price">Rs.4000</div>
+            <ul class="features">
+              <li><span>✓</span> Everything in Standard</li>
+              <li><span>✓</span> Advanced Animations</li>
+              <li><span>✓</span> Countdown</li>
+              <li><span>✓</span> Unlimited Photos</li>
+              <li><span>✓</span> Unlimited Music</li>
+              <li><span>✓</span> Custom Sections</li>
+            </ul>
+          </article>
+
+          <article class="price-card popular reveal">
+            <span class="popular-badge">Most Popular</span>
+            <h3>Ultra Premium Package</h3>
+            <div class="price">Rs.5000</div>
+            <ul class="features">
+              <li><span>✓</span> Everything in Premium</li>
+              <li><span>✓</span> Luxury UI</li>
+              <li><span>✓</span> Advanced Effects</li>
+              <li><span>✓</span> Password Protection</li>
+              <li><span>✓</span> Custom Features</li>
+              <li><span>✓</span> Priority Support</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Portfolio Showcase</h2>
+          <p>A few elegant concepts inspired by genuine surprise website experiences.</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #f9b6cb, #ffd9e9 55%, #f3c88a);">
+              <div class="overlay">Birthday Surprise</div>
+            </div>
+            <h3>Birthday Surprise</h3>
+            <p>Warm, vibrant and joyful layout with musical notes, wishes and celebratory styling.</p>
+          </article>
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #f6d0e0, #f6bbc9 46%, #fbd1a3);">
+              <div class="overlay">Proposal Website</div>
+            </div>
+            <h3>Proposal Website</h3>
+            <p>Soft romantic charm with elegant visual harmony and heartfelt storytelling flow.</p>
+          </article>
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #f7d8d1, #f7c2be 52%, #fbc791);">
+              <div class="overlay">Anniversary Website</div>
+            </div>
+            <h3>Anniversary Website</h3>
+            <p>Timeless romantic presentation tailored to cherished memories and love stories.</p>
+          </article>
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #f4d0de, #f3a4c2 42%, #f4d98d);">
+              <div class="overlay">Romantic Website</div>
+            </div>
+            <h3>Romantic Website</h3>
+            <p>Beautifully layered romantic visuals with premium gradients and graceful movement.</p>
+          </article>
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #e9cfeb, #f2a6bb 48%, #f8de9b);">
+              <div class="overlay">Love Letter Website</div>
+            </div>
+            <h3>Love Letter Website</h3>
+            <p>Elegant letter-style presentation with heartfelt copies and memorable design mood.</p>
+          </article>
+          <article class="portfolio-card reveal">
+            <div class="portfolio-preview" style="background:linear-gradient(135deg, #f9d8dc, #f7afbc 52%, #f0d79c);">
+              <div class="overlay">Thank You Website</div>
+            </div>
+            <h3>Thank You Website</h3>
+            <p>Professional, graceful and sincere layout to express appreciation with style.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Customer Reviews</h2>
+          <p>Real moments, heartfelt praise and memorable experiences from happy clients.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">AK</div>
+              <div>
+                <div class="review-name">Ayesha Khan</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"The website was beyond my expectations. My husband absolutely loved the surprise."</p>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">AR</div>
+              <div>
+                <div class="review-name">Ali Raza</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"Beautiful design and very professional work. Everything felt smooth, elegant and premium."</p>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">SA</div>
+              <div>
+                <div class="review-name">Sara Ahmed</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"The animations and music made my birthday surprise unforgettable. It felt incredibly personal."</p>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">HM</div>
+              <div>
+                <div class="review-name">Hamza Malik</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"Highly recommended. Excellent communication and premium quality from start to finish."</p>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">FN</div>
+              <div>
+                <div class="review-name">Fatima Noor</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"The best surprise website service I have ever used. It looked immaculate and felt so special."</p>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-head">
+              <div class="avatar">ZM</div>
+              <div>
+                <div class="review-name">Zainab Malik</div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>"My anniversary page looked so luxurious and unique. It created the perfect emotional impact."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Why Choose Us</h2>
+          <p>Designed for emotion, detail, quality and memorable storytelling.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-item reveal">
+            <div class="icon">💎</div>
+            <h3>Premium Design</h3>
+            <p>Luxury visuals with curated romantic touches and polished user flow.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">⚡</div>
+            <h3>Fast Delivery</h3>
+            <p>Quick turnarounds without compromising style or quality.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">💸</div>
+            <h3>Affordable Prices</h3>
+            <p>High-end presentation at practical price points for every budget.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>Responsive and smooth across all devices, from phones to desktops.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">🔒</div>
+            <h3>Secure</h3>
+            <p>Privacy-focused delivery with protection options for premium projects.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">🕒</div>
+            <h3>24/7 Support</h3>
+            <p>Always available to help with edits, features and special requests.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">🛠️</div>
+            <h3>Custom Made</h3>
+            <p>Every page is handcrafted around your story and special event.</p>
+          </article>
+          <article class="why-item reveal">
+            <div class="icon">🌈</div>
+            <h3>Unlimited Creativity</h3>
+            <p>We transform ideas into deeply personal, imaginative digital experiences.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know before placing your order.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item active reveal">
+            <button class="faq-question" type="button">
+              <span>How long does it take to deliver a website?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Usually within 24 to 48 hours depending on the package and customization needs. Premium or custom orders may take a bit longer.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Can I request a personalized design?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Yes. Every website can be tailored with your theme, colors, wishes, photos, sections and special story details.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Do you include music and photos?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Yes. Music, photo galleries and custom sections are available depending on the package you choose.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Will the website work on mobile devices?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Absolutely. All websites are designed to be fully responsive and look beautiful on mobile, tablet and desktop screens.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Contact Us</h2>
+          <p>Let us help you create a premium surprise website for your special moment.</p>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-info">
+            <div class="contact-row">
+              <div class="contact-icon">🏢</div>
+              <div>
+                <div class="contact-title">Business Name</div>
+                <div class="contact-sub">Love&Wish</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">📱</div>
+              <div>
+                <div class="contact-title">WhatsApp</div>
+                <div class="contact-sub">03358048730</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">🪄</div>
+              <div>
+                <div class="contact-title">Order Request</div>
+                <div class="contact-sub">Click here to order your personalized website.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-box">
+            <div class="wa-card">
+              <div class="wa-icon">💬</div>
+              <h3>Ready to surprise them?</h3>
+              <p>Reach out on WhatsApp and let us create a website that feels unforgettable.</p>
+              <a class="whatsapp-link" href="https://wa.me/923358048730" target="_blank" rel="noopener">WhatsApp Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>Love&Wish</strong>
+      <p>Made with ❤️ for unforgettable memories.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <a class="floating-wa" href="https://wa.me/923358048730" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script>
+    (() => {
+      const loader = document.getElementById('loader');
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      const backToTop = document.getElementById('backToTop');
+      const revealEls = document.querySelectorAll('.reveal');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const typedText = document.getElementById('typedText');
+      const phrases = ['Birthday Love', 'Anniversary Magic', 'Romantic Surprise', 'Elegant Memories'];
+      let phraseIndex = 0;
+      let charIndex = 0;
+
+      const startLoader = () => {
+        window.addEventListener('load', () => {
+          setTimeout(() => loader.classList.add('hidden'), 450);
+        });
+      };
+
+      const initTyped = () => {
+        const typeWord = () => {
+          const phrase = phrases[phraseIndex];
+          typedText.textContent = phrase.slice(0, charIndex + 1);
+          charIndex++;
+          if (charIndex > phrase.length) {
+            setTimeout(() => {
+              charIndex = 0;
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              typeWord();
+            }, 1200);
+            return;
+          }
+          setTimeout(typeWord, 90);
+        };
+        typeWord();
+      };
+
+      const initReveal = () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+      };
+
+      const initCounters = () => {
+        const counters = document.querySelectorAll('[data-count]');
+        const counterObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            const duration = 1400;
+            const step = Math.max(1, Math.floor(target / (duration / 18)));
+            let current = 0;
+            const tick = () => {
+              current += step;
+              if (current >= target) {
+                el.textContent = target;
+                counterObserver.unobserve(el);
+              } else {
+                el.textContent = current;
+                requestAnimationFrame(tick);
+              }
+            };
+            tick();
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(counter => counterObserver.observe(counter));
+      };
+
+      const initFaq = () => {
+        faqItems.forEach(item => {
+          const btn = item.querySelector('.faq-question');
+          btn.addEventListener('click', () => {
+            const open = item.classList.contains('active');
+            faqItems.forEach(f => f.classList.remove('active'));
+            if (!open) item.classList.add('active');
+          });
+        });
+      };
+
+      const initThemeToggle = () => {
+        const saved = localStorage.getItem('lovewish-theme');
+        if (saved === 'dark') {
+          body.classList.add('dark-mode');
+          themeToggle.textContent = '☀️';
+        }
+        themeToggle.addEventListener('click', () => {
+          const isDark = body.classList.toggle('dark-mode');
+          localStorage.setItem('lovewish-theme', isDark ? 'dark' : 'light');
+          themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+      };
+
+      const initBackToTop = () => {
+        window.addEventListener('scroll', () => {
+          backToTop.classList.toggle('show', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      };
+
+      const rippleInit = () => {
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+          btn.addEventListener('click', function (e) {
+            const circle = document.createElement('span');
+            const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+            const radius = diameter / 2;
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${e.clientX - btn.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${e.clientY - btn.getBoundingClientRect().top - radius}px`;
+            circle.classList.add('ripple');
+            btn.appendChild(circle);
+            setTimeout(() => circle.remove(), 700);
+          });
+        });
+      };
+
+      startLoader();
+      initTyped();
+      initReveal();
+      initCounters();
+      initFaq();
+      initThemeToggle();
+      initBackToTop();
+      rippleInit();
+    })();
+  </script>
+</body>
+</html>
